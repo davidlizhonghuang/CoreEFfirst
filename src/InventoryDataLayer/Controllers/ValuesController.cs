@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using InventoryDataLayer.DataModels;
 
 namespace InventoryDataLayer.Controllers
 {
     [Route("api/[controller]")]
-    public class ValuesController : Controller
+    public class TeaInventorysController : Controller
     {
+
+        private readonly InventoryContext _context;
+
+
         // GET api/values
         [HttpGet]
         public IEnumerable<string> Get()

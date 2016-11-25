@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Slot CRUD Page";
+}
+
+
+<div ng-controller="slotCtrl">
+    <H2 class="glyphicon glyphicon-flash">Slot Management</H2>
+    <div class="col-sm-12">
+        <div class="col-sm-4">
+            <h3>Slot CRUD</h3>
+            <div>
+                ID: <input type="text" ng-model="nextId" /><br />
+                Name:<input type="text" ng-model="SlotName" /><br />
+                Note:<input type="text" ng-model="Description" /><br />
+                <input type="button" id="SlotBtn" ng-click="addSlot(nextId,SlotName,Description)" value="Submit" class="btn btn-primary" />
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <h3>Edit Slot</h3>
+            <div>
+                <input type="text" ng-model="EachSlotlist.slotNo" ng-show="false" /><br />
+                Name: <input type="text" ng-model="EachSlotlist.slotName" /><br />
+                Note: <input type="text" ng-model="EachSlotlist.description" /><br />
+                <input type="button" id="SlotBtn" ng-click="updateSlot(EachSlotlist.slotNo,EachSlotlist.slotName,EachSlotlist.description)" value="Submit" class="btn btn-primary" />
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <h3>Slot List</h3>
+            <div>
+                <table class="table table-responsive">
+                    <thead>
+
+                        <tr><td>Slot No</td><td>Name</td><td>Description</td><td></td></tr>
+
+                    </thead>
+
+                    <tbody ng-repeat="item in Slotlist">
+
+                        <tr><td><a href="" ng-click="eachSlot(item.slotNo)">{{item.slotNo}} Edit</a></td><td>{{item.slotName}}</td><td>{{item.description}}</td><td><button ng-click="deleteSlot(item.slotNo)" class="btn btn-danger">Delete</button></td></tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <br />
+
+    <H2 class="glyphicon glyphicon-flash">Category Management</H2>
+    <div class="col-sm-12">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4"></div>
+</div>
+</div>
+
