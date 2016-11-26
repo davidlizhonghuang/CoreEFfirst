@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div ng-controller="labelCtrl" class="col-sm-12" id="printTable">
+   
+     <p class="alert alert-warning" ng-hide="labelList">please wait...</p>
+  
+     <input type="button" ng-click="printDiv()" value="Print" />
+    
+     <br />
+
+    <div ng-repeat="item in labelList" class="">
+        <table class="table table-condensed">
+            <tr>
+                <td>Area:</td>
+                <td>{{item.slot}}</td>
+            </tr>
+            <tr>
+                <td>Category:</td>
+                <td>{{item.category}}</td>
+            </tr>
+            <tr>
+                <td>ItemName:</td>
+                <td>{{item.itemName}}</td>
+            </tr>
+            <tr>
+                <td>ItemPrice:</td>
+                <td>{{item.itemPrice}}</td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+

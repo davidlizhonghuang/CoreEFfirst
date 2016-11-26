@@ -1,0 +1,154 @@
+﻿@{
+    ViewData["Title"] = "Slot CRUD Page";
+}
+
+<div ng-controller="teaitemCtrl">
+
+    <H2 class="glyphicon glyphicon-flash">Tea Item Management</H2>
+
+    <p class="alert alert-warning" ng-hide="TeaItemlist">please wait...</p>
+
+    <div class="col-sm-12">
+        <div class="col-sm-4">
+            <h3>Tea Item CRUD</h3>
+            <table class="table table-responsive">
+                <tr>
+                    <td>
+                        ID
+                    </td>
+                    <td>
+                        <input type="text" ng-model="nextId" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Name
+                    </td>
+                    <td>
+                        <input type="text" ng-model="itemName" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        CategoryId
+                    </td>
+                    <td>
+                        <input type="text" ng-model="categoryId" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        ItemPrice
+                    </td>
+                    <td>
+                        <input type="text" ng-model="itemPrice" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        ItemUnit
+                    </td>
+                    <td>
+                        <input type="text" ng-model="itemUnit" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        UnitNumber
+                    </td>
+                    <td>
+                        <input type="text" ng-model="unitNumber" />
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="button" id="SlotBtn" ng-click="addTeaItem(nextId,itemName,categoryId,itemPrice,itemUnit,unitNumber)" value="Submit" class="btn btn-primary" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-sm-4">
+            <h3>Edit Item</h3>
+            <table class="table table-responsive">
+                <tr>
+                    <td>
+                        <input type="text" ng-model="EachItemlist.id" ng-show="false" /><br />
+                        Name
+                    </td>
+                    <td>
+                        <input type="text" ng-model="EachItemlist.itemName" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        CategoryId
+                    </td>
+                    <td>
+                        <input type="text" ng-model="EachItemlist.categoryId" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Price
+                    </td>
+                    <td>
+                        <input type="text" ng-model="EachItemlist.itemPrice" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Unit
+                    </td>
+                    <td>
+                        <input type="text" ng-model="EachItemlist.itemUnit" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Items in Unit
+                    </td>
+                    <td>
+                        <input type="text" ng-model="EachItemlist.unitNumber" />
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="button" id="SlotBtn" ng-click="updateTeaItem(EachItemlist.id,EachItemlist.itemName,EachItemlist.categoryId,EachItemlist.itemPrice,EachItemlist.itemUnit,EachItemlist.unitNumber)" value="Submit" class="btn btn-primary" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-sm-4">
+            <h3>Tea Item List</h3>
+        
+                <table class="table table-responsive">
+                    <thead>
+
+                        <tr><td>Id</td><td>Name</td><td>CategoryId</td><td>Unit Price</td><td>Unit</td><td>Items in Unit</td></tr>
+
+                    </thead>
+
+                    <tbody ng-repeat="item in TeaItemlist">
+
+                        <tr>
+                            <td><a href="" ng-click="eachTeaItem(item.id)">{{item.id}} Edit</a></td>
+                            <td>{{item.itemName}}</td>
+                            <td>{{item.categoryId}}</td>
+                            <td>{{item.itemPrice}}</td>
+                            <td>{{item.itemUnit}}</td>
+                            <td>{{item.unitNumber}}</td>
+                            <td><button ng-click="deleteTeaItem(item.id)" class="btn btn-danger">Delete</button></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+         
+        </div>
+    </div>
+
+
+</div>
+

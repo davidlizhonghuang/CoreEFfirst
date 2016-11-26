@@ -2,55 +2,114 @@
     ViewData["Title"] = "Slot CRUD Page";
 }
 
-
 <div ng-controller="categoryCtrl">
-    <H2 class="glyphicon glyphicon-flash">Slot Management</H2>
+    <H2 class="glyphicon glyphicon-flash">Category Management</H2>
+    <p class="alert alert-warning" ng-hide="Categorylist">please wait...</p>
     <div class="col-sm-12">
         <div class="col-sm-4">
-            <h3>Slot CRUD</h3>
-            <div>
-                ID: <input type="text" ng-model="nextId" /><br />
-                Name:<input type="text" ng-model="SlotName" /><br />
-                Note:<input type="text" ng-model="Description" /><br />
-                <input type="button" id="SlotBtn" ng-click="addSlot(nextId,SlotName,Description)" value="Submit" class="btn btn-primary" />
-            </div>
+            <h3>Category CRUD</h3>
+            <table class="table table-responsive">
+                <tr>
+                    <td>
+                        ID
+                    </td>
+                    <td>
+                        <input type="text" ng-model="nextId" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Name
+                    </td>
+                    <td>
+                        <input type="text" ng-model="CategoryName" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        ParentId
+                    </td>
+                    <td>
+                        <input type="text" ng-model="ParentId" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        SlotNo
+                    </td>
+                    <td>
+                        <input type="text" ng-model="SlotNo" />
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="button" id="SlotBtn" ng-click="addCategory(nextId,CategoryName,ParentId,SlotNo)" value="Submit" class="btn btn-primary" />
+                    </td>
+                </tr>
+            </table>
         </div>
         <div class="col-sm-4">
-            <h3>Edit Slot</h3>
-            <div>
-                <input type="text" ng-model="EachSlotlist.slotNo" ng-show="false" /><br />
-                Name: <input type="text" ng-model="EachSlotlist.slotName" /><br />
-                Note: <input type="text" ng-model="EachSlotlist.description" /><br />
-                <input type="button" id="SlotBtn" ng-click="updateSlot(EachSlotlist.slotNo,EachSlotlist.slotName,EachSlotlist.description)" value="Submit" class="btn btn-primary" />
-            </div>
+            <h3>Edit Category</h3>
+            <table>
+
+                <tr>
+                    <td>
+                        <input type="text" ng-model="EachCategorylist.id" ng-show="false" />
+                        Name
+                    </td>
+                    <td>
+
+                        <input type="text" ng-model="EachCategorylist.categoryName" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        ParentId
+                    </td>
+                    <td>
+                        <input type="text" ng-model="EachCategorylist.parentId" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        SlotNo
+                    </td>
+                    <td>
+                        <input type="text" ng-model="EachCategorylist.slotNo" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="button" id="SlotBtn" ng-click="updateCategory(EachCategorylist.id,EachCategorylist.categoryName,EachCategorylist.parentId, EachCategorylist.slotNo)" value="Submit" class="btn btn-primary" />
+                    </td>
+                </tr>
+
+            </table>
         </div>
+
         <div class="col-sm-4">
-            <h3>Slot List</h3>
-            <div>
+            <h3>Category List</h3>
+       
                 <table class="table table-responsive">
                     <thead>
-
-                        <tr><td>Slot No</td><td>Name</td><td>Description</td><td></td></tr>
-
+                        <tr><td>Category Id</td><td>Name</td><td>ParentId</td><td>SlotNo</td><td></td></tr>
                     </thead>
-
-                    <tbody ng-repeat="item in Slotlist">
-
-                        <tr><td><a href="" ng-click="eachSlot(item.slotNo)">{{item.slotNo}} Edit</a></td><td>{{item.slotName}}</td><td>{{item.description}}</td><td><button ng-click="deleteSlot(item.slotNo)" class="btn btn-danger">Delete</button></td></tr>
-
+                    <tbody ng-repeat="item in Categorylist">
+                        <tr>
+                            <td><a href="" ng-click="eachCategory(item.id)">{{item.id}} Edit</a></td>
+                            <td>{{item.categoryName}}</td>
+                            <td>{{item.parentId}}</td>
+                            <td>{{item.slotNo}}</td>
+                            <td><button ng-click="deleteCategory(item.id)" class="btn btn-danger">Delete</button></td>
+                        </tr>
                     </tbody>
                 </table>
-            </div>
+         
         </div>
     </div>
-
-    <br />
-
-    <H2 class="glyphicon glyphicon-flash">Category Management</H2>
-    <div class="col-sm-12">
-        <div class="col-sm-4"></div>
-        <div class="col-sm-4"></div>
-        <div class="col-sm-4"></div>
-    </div>
 </div>
-

@@ -8,25 +8,70 @@
     <div class="col-sm-12">
         <div class="col-sm-4">
             <h3>Slot CRUD</h3>
-            <div>
-                ID: <input type="text" ng-model="nextId" /><br />
-                Name:<input type="text" ng-model="SlotName" /><br />
-                Note:<input type="text" ng-model="Description" /><br />
-                <input type="button" id="SlotBtn" ng-click="addSlot(nextId,SlotName,Description)" value="Submit" class="btn btn-primary" />
-            </div>
+            <table class="table table-responsive">
+                <tr>
+                    <td>
+                        ID
+                    </td>
+                    <td>
+                        <input type="text" ng-model="nextId" />
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Name
+                    </td>
+                    <td>
+                        <input type="text" ng-model="SlotName" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Notes</td>
+                    <td>
+                        <input type="text" ng-model="Description" />
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="button" id="SlotBtn" ng-click="addSlot(nextId,SlotName,Description)" value="Submit" class="btn btn-primary" />
+                    </td>
+                </tr>
+            </table>
         </div>
         <div class="col-sm-4">
             <h3>Edit Slot</h3>
-            <div>
-                <input type="text" ng-model="EachSlotlist.slotNo" ng-show="false" /><br />
-                Name: <input type="text" ng-model="EachSlotlist.slotName" /><br />
-                Note: <input type="text" ng-model="EachSlotlist.description" /><br />
-                <input type="button" id="SlotBtn" ng-click="updateSlot(EachSlotlist.slotNo,EachSlotlist.slotName,EachSlotlist.description)" value="Submit" class="btn btn-primary" />
-            </div>
+            <table class="table table-responsive">
+                <tr>
+                    <td>
+                        <input type="text" ng-model="EachSlotlist.slotNo" ng-show="false" /><br />
+                        Name
+                    </td>
+                    <td>
+                        <input type="text" ng-model="EachSlotlist.slotName" />
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Note
+                    </td>
+                    <td>
+                        <input type="text" ng-model="EachSlotlist.description" />
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="button" id="SlotBtn" ng-click="updateSlot(EachSlotlist.slotNo,EachSlotlist.slotName,EachSlotlist.description)" value="Submit" class="btn btn-primary" />
+                    </td>
+                </tr>
+            </table>
         </div>
         <div class="col-sm-4">
             <h3>Slot List</h3>
-            <div>
+         
                 <table class="table table-responsive">
                     <thead>
 
@@ -40,17 +85,9 @@
 
                     </tbody>
                 </table>
-            </div>
+         
         </div>
     </div>
 
-    <br />
-
-    <H2 class="glyphicon glyphicon-flash">Category Management</H2>
-    <div class="col-sm-12">
-        <div class="col-sm-4"></div>
-        <div class="col-sm-4"></div>
-        <div class="col-sm-4"></div>
-</div>
-</div>
+ </div>
 

@@ -2,7 +2,14 @@
     ViewData["Title"] = "Home Page";
 }
 
+
 <div ng-controller="indexCtrl">
 
-
+    <a ui-sref="slotview">Slot CRUD</a>
+    <a ui-sref="categoryview">Category CRUD</a>
+    <a ui-sref="teaitemview">TeaItem CRUD</a>
+    <ui-view>
+        <p>This is the CRUD SPA page to manage inventory</p>
+    </ui-view>
 </div>
+
