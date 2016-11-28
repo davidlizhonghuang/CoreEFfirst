@@ -15,10 +15,56 @@ slot.controller("indexCtrl", indexCtrl);
 
 slot.controller("labelCtrl", labelCtrl);
 
+
+slot.config(function ($stateProvider, $urlRouterProvider) { //menu
+
+    var slotviewState = {
+        name: 'slotview',
+        url: 'Home/SlotCRUD',
+        templateUrl: 'Home/SlotCRUD'
+    }
+
+    var categoryviewState = {
+        name: 'categoryview',
+        url: 'Home/CategoryCRUD',
+        templateUrl: 'Home/CategoryCRUD'
+    }
+
+    var teaitemviewState = {
+        name: 'teaitemview',
+        url: 'Home/TeaItemCRUD',
+        templateUrl: 'Home/TeaItemCRUD'
+    }
+
+    var homeviewState = {
+        name: '#',
+        url: 'Home/Index',
+        templateUrl: 'Home/Index'
+    }
+
+    $stateProvider.state(slotviewState);
+
+    $stateProvider.state(categoryviewState);
+
+    $stateProvider.state(teaitemviewState);
+
+    $stateProvider.state(homeviewState);
+    
+    var labelsearchviewState = {
+        name: 'labelsearchview',
+        url: 'Label/PrintLabel',
+        templateUrl: 'Label/PrintLabel'
+    }
+
+    $stateProvider.state(labelsearchviewState);
+
+});
+
 var rootUrl = "Home/";
 
 function slotCtrl($http, $scope) {
 
+    $scope.errMsg = "";
 
     $scope.addSlot = function (SlotNo, SlotName, Description) {
 
@@ -41,6 +87,8 @@ function slotCtrl($http, $scope) {
             function (data) {
 
             }, function (err) {
+
+                $scope.errMsg = "Can not insert slot";
 
             });
 
@@ -67,6 +115,7 @@ function slotCtrl($http, $scope) {
             },
 
             function (err) {
+                $scope.errMsg = "Can not get slot";
 
             });
     }
@@ -96,6 +145,8 @@ function slotCtrl($http, $scope) {
             },
 
             function (err) {
+
+                $scope.errMsg = "Can not get each slot";
 
             });
     }
@@ -128,6 +179,8 @@ function slotCtrl($http, $scope) {
 
             function (err) {
 
+                $scope.errMsg = "Can not update slot";
+
             });
 
     }
@@ -149,6 +202,8 @@ function slotCtrl($http, $scope) {
             },
 
             function (err) {
+
+                $scope.errMsg = "Can not delete slot";
 
             });
 
@@ -176,6 +231,8 @@ function slotCtrl($http, $scope) {
 
             function (err) {
 
+                $scope.errMsg = "Can not get new id";
+
             });
 
 
@@ -187,12 +244,14 @@ function slotCtrl($http, $scope) {
 
 function categoryCtrl($http, $scope) {
 
-    $scope.addCategory = function (Id, CategoryName, ParentId, SlotNo) {
+    $scope.errMsg = "";
+
+    $scope.addCategory = function (Id, CategoryName, SubSlot, SlotNo) {
 
         var teaCategory = new localCategory();
         teaCategory.Id = Id;
         teaCategory.CategoryName = CategoryName;
-        teaCategory.ParentId = ParentId;
+        teaCategory.SubSlot = SubSlot;
         teaCategory.SlotNo = SlotNo;
 
 
@@ -211,6 +270,8 @@ function categoryCtrl($http, $scope) {
             function (data) {
 
             }, function (err) {
+
+                $scope.errMsg = "Can not add new category";
 
             });
 
@@ -237,6 +298,8 @@ function categoryCtrl($http, $scope) {
             },
 
             function (err) {
+
+                $scope.errMsg = "Can not get all category";
 
             });
     }
@@ -267,16 +330,18 @@ function categoryCtrl($http, $scope) {
 
             function (err) {
 
+                $scope.errMsg = "Can not get each category";
+
             });
     }
 
-    $scope.updateCategory = function (id, name, parentid, slotno) {
+    $scope.updateCategory = function (id, name, subslot, slotno) {
 
         var jslot = new localCategory();
 
         jslot.Id = id;
         jslot.CategoryName = name;
-        jslot.ParentId = parentid;
+        jslot.SubSlot = subslot;
         jslot.SlotNo = slotno;
 
         var req = {
@@ -299,6 +364,8 @@ function categoryCtrl($http, $scope) {
 
             function (err) {
 
+                $scope.errMsg = "Can not update each category";
+
             });
 
     }
@@ -320,6 +387,7 @@ function categoryCtrl($http, $scope) {
             },
 
             function (err) {
+                $scope.errMsg = "Can not delete a category";
 
             });
 
@@ -345,6 +413,7 @@ function categoryCtrl($http, $scope) {
             },
 
             function (err) {
+                $scope.errMsg = "Can not get new category id";
 
             });
 
@@ -357,19 +426,27 @@ function categoryCtrl($http, $scope) {
 
 function teaitemCtrl($http, $scope) {
 
+    $scope.errMsg = "";
+
     var teaItem = new localTeaItem();
 
-
-
-    $scope.addTeaItem = function (nextId, itemName, categoryId, itemPrice, itemUnit, unitNumber) {
-
-        teaItem.id = nextId;
+    $scope.addTeaItem = function (nextId, itemName, categoryId, itemPrice, itemUnit, unitNumber, measureUnit, sizes, itemType, productDate, storageDate, itemTaken, imagepath)
+    {
+        teaItem.Id = nextId;
         teaItem.ItemName = itemName;
         teaItem.ItemPrice = itemPrice;
         teaItem.CategoryId = categoryId;
         teaItem.ItemUnit = itemUnit;
         teaItem.UnitNumber = unitNumber;
+        teaItem.MeasureUnit = measureUnit;
+        teaItem.Sizes = sizes;
+        teaItem.ItemType = itemType;
+        teaItem.ProductDate = productDate;
+        teaItem.StorageDate = storageDate;
+        teaItem.ItemTaken = itemTaken;
+        teaItem.Imagepath = imagepath;
 
+        console.log(teaItem);
 
         var req = {
 
@@ -389,6 +466,8 @@ function teaitemCtrl($http, $scope) {
             function (data) {
 
             }, function (err) {
+
+                $scope.errMsg = "Can not add tea item";
 
             });
 
@@ -415,6 +494,8 @@ function teaitemCtrl($http, $scope) {
             },
 
             function (err) {
+
+                $scope.errMsg = "Can not get tea item";
 
             });
     }
@@ -445,19 +526,30 @@ function teaitemCtrl($http, $scope) {
 
             function (err) {
 
+                $scope.errMsg = "Can not each tea item";
+
             });
     }
 
-    $scope.updateTeaItem = function (id, name, categoryid, itemprice, itemunit, unitnumber) {
+    $scope.updateTeaItem = function (id, name, categoryid, itemprice, itemunit, unitnumber, measureUnit, sizes, itemType, productDate, storageDate, itemTaken, imagepath) {
 
         var jslot = new localTeaItem();
 
-        jslot.id = id;
+        jslot.Id = id;
         jslot.ItemName = name;
         jslot.CategoryId = categoryid;
         jslot.ItemPrice = itemprice;
         jslot.ItemUnit = itemunit;
         jslot.UnitNumber = unitnumber;
+        jslot.MeasureUnit = measureUnit;
+        jslot.Sizes = sizes;
+        jslot.ItemType = itemType;
+        jslot.ProductDate = productDate;
+        jslot.StorageDate = storageDate;
+        jslot.ItemTaken = itemTaken;
+        jslot.Imagepath = imagepath;
+        
+        
 
         var req = {
 
@@ -478,6 +570,7 @@ function teaitemCtrl($http, $scope) {
             },
 
             function (err) {
+                $scope.errMsg = "Can not update tea item";
 
             });
 
@@ -500,6 +593,7 @@ function teaitemCtrl($http, $scope) {
             },
 
             function (err) {
+                $scope.errMsg = "Can not delete tea item";
 
             });
 
@@ -521,10 +615,13 @@ function teaitemCtrl($http, $scope) {
         $http(req).then(
 
             function (data) {
+
                 $scope.nextId = data.data;
+
             },
 
             function (err) {
+                $scope.errMsg = "Can not new tea item id";
 
             });
 
@@ -533,15 +630,6 @@ function teaitemCtrl($http, $scope) {
     }
 
     $scope.GetnewId();
-}
-
-function indexCtrl($http, $scope) {
-
-    var injector = angular.injector(['ng', 'myModule']);
-
-    var greeter = injector.get('greeter');
-
-
 }
 
 function localSlot(SlotNo, SlotName, Description) {
@@ -553,81 +641,52 @@ function localSlot(SlotNo, SlotName, Description) {
     this.Description = Description;
 }
 
-function localCategory(Id, CategoryName, ParentId, SlotNo) {
+function localCategory(Id, CategoryName, SubSlot, SlotNo) {
 
     this.SlotNo = SlotNo;
 
     this.CategoryName = CategoryName;
 
-    this.ParentId = ParentId;
+    this.SubSlot = SubSlot;
 
     this.Id = Id;
 }
 
-function localTeaItem(id, ItemName, CategoryId, ItemPrice, ItemUnit, UnitNumber) {
-    this.id = id;
+function localTeaItem(Id, ItemName, CategoryId, ItemPrice, ItemUnit, UnitNumber,MeasureUnit,Sizes,ItemType,ProductDate,StorageDate ,ItemTaken,Imagepath 
+) {
+    this.Id = Id;
     this.ItemName = ItemName;
     this.CategoryId = CategoryId;
     this.ItemPrice = ItemPrice;
     this.ItemUnit = ItemUnit;
     this.UnitNumber = UnitNumber;
+
+    this.MeasureUnit = MeasureUnit;
+    this.Sizes = Sizes;
+    this.ItemType = ItemType;
+    this.ProductDate = ProductDate;
+    this.StorageDate = StorageDate;
+    this.ItemTaken = ItemTaken;
+    this.Imagepath = Imagepath;
 }
 
-slot.config(function ($stateProvider, $urlRouterProvider) { //menu
-
-    var slotviewState = {
-        name: 'slotview',
-        url: 'Home/SlotCRUD',
-        templateUrl: 'Home/SlotCRUD'
-    }
-
-
-
-    var categoryviewState = {
-        name: 'categoryview',
-        url: 'Home/CategoryCRUD',
-        templateUrl: 'Home/CategoryCRUD'
-    }
-
-    var teaitemviewState = {
-        name: 'teaitemview',
-        url: 'Home/TeaItemCRUD',
-        templateUrl: 'Home/TeaItemCRUD'
-    }
-
-
-    var homeviewState = {
-        name: '#',
-        url: 'Home/Index',
-        templateUrl: 'Home/Index'
-    }
-
-    $stateProvider.state(slotviewState);
-
-    $stateProvider.state(categoryviewState);
-
-    $stateProvider.state(teaitemviewState);
-
-    $stateProvider.state(homeviewState);
-    
-
-
-});
-
 function indexCtrl($scope) {
-
- 
+     
 };
 
 function labelCtrl($scope, $http) {
-    //worked on the label
+
+    var rootUrl = "Label/";
+
+    $scope.errMsg = "";
+
     $scope.getLabel = function () {
 
         var req = {
 
             method: 'Get',
 
-            url: 'Label/GetLabels',
+            url: rootUrl+'GetLabels',
 
             headers: {
                 'Content-Type': 'application/json'
@@ -638,24 +697,65 @@ function labelCtrl($scope, $http) {
         $http(req).then(
 
             function (data) {
+
                 $scope.labelList = data.data;
+
             },
 
             function (err) {
+                $scope.errMsg = "Can not get label";
 
             });
     }
  
-    $scope.getLabel();
-    
     $scope.printDiv = function () {
 
-        var printContents = document.getElementById("printTable").innerHTML;
+        var printContents = document.getElementById("printTable").innerHTML;//printloop printTable
         var popupWin = window.open('', '_blank', 'width=300,height=300');
         popupWin.document.open();
         popupWin.document.write('<html><head><link rel="stylesheet" type="text/css" href="style.css" /></head><body onload="window.print()">' + printContents + '</body></html>');
         popupWin.document.close();
     }
 
+    $scope.searchclick = false;
+
+    $scope.searchLabel = function (ItemName, SlotName, CategoryName) {
+
+        $scope.searchclick = true;
+
+        var para = new SearchPara();
+
+        para.CategoryName = CategoryName;
+        para.ItemName = ItemName;
+        para.SlotName = SlotName;
+
+        var req = {
+            method: 'post',
+            url: rootUrl+'SearchLabel',
+            data:para
+        };
+
+        $http(req).then(
+            function (data)
+            {
+                $scope.searchList = data.data;
+
+                $scope.searchclick = false; //after data loaded, disappear
+
+            },
+            function (err) {
+
+                $scope.errMsg = "Can not search label";
+
+            }
+            );
+
+    }
+
 }
 
+function SearchPara(ItemName, SlotName, CategoryName) {
+    this.ItemName = ItemName;
+    this.SlotName = SlotName;
+    this.CategoryName = CategoryName;
+}

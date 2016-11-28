@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
-namespace TeaJournalInventory.DataModels
+namespace EFDataAccess.DataModels
 {
     public class InventoryContext: DbContext
     {
@@ -16,7 +16,7 @@ namespace TeaJournalInventory.DataModels
         public DbSet<TeaCategory> TeaCategorys { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>(); //so this is the one
             //base.OnModelCreating(modelBuilder);
         }
     }

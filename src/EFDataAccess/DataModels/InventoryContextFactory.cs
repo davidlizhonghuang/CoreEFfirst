@@ -4,7 +4,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TeaJournalInventory.DataModels
+namespace EFDataAccess.DataModels
 {
     public class InventoryContextFactory : IDbContextFactory<InventoryContext>
     {

@@ -21,7 +21,8 @@
     "Microsoft.Extensions.Logging.Debug": "1.0.0",
     "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
     "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0",
-    "AngularJS.Route": "1.5.8"
+    "AngularJS.Route": "1.5.8",
+    "EFDataAccess": "1.0.0-*"
   },
 
   "tools": {

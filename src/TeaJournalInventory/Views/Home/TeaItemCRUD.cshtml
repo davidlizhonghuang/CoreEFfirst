@@ -61,10 +61,79 @@
                         <input type="text" ng-model="unitNumber" />
                     </td>
                 </tr>
+
+                @*here*@
+
+                <tr>
+                    <td>
+                        MeasureUnit
+                    </td>
+                    <td>
+                        <input type="text" ng-model="measureUnit" />
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        Sizes
+                    </td>
+                    <td>
+                        <input type="text" ng-model="sizes" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        ItemType
+                    </td>
+                    <td>
+                        <input type="text" ng-model="itemType" />
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        ProductDate
+                    </td>
+                    <td>
+                        <input type="datetime" ng-model="productDate" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        StorageDate
+                    </td>
+                    <td>
+                        <input type="datetime" ng-model="storageDate" />
+                    </td>
+                </tr>
+             
+                <tr>
+                    <td>
+                        ItemTaken
+                    </td>
+                    <td>
+                        <input type="text" ng-model="itemTaken" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Imagepath
+                    </td>
+                    <td>
+                        <input type="text" ng-model="imagepath" />
+                    </td>
+                </tr>
+
+                @*here*@
                 <tr>
                     <td></td>
                     <td>
-                        <input type="button" id="SlotBtn" ng-click="addTeaItem(nextId,itemName,categoryId,itemPrice,itemUnit,unitNumber)" value="Submit" class="btn btn-primary" />
+                        <input type="button" id="SlotBtn" ng-click="addTeaItem(nextId,itemName,categoryId,itemPrice,itemUnit,unitNumber ,measureUnit,sizes,itemType,productDate,storageDate,itemTaken,imagepath)" value="Submit" class="btn btn-primary" />
                     </td>
                 </tr>
             </table>
@@ -105,6 +174,7 @@
                         <input type="text" ng-model="EachItemlist.itemUnit" />
                     </td>
                 </tr>
+
                 <tr>
                     <td>
                         Items in Unit
@@ -113,6 +183,69 @@
                         <input type="text" ng-model="EachItemlist.unitNumber" />
                     </td>
                 </tr>
+
+         
+                <tr>
+                    <td>
+                        measureUnit
+                    </td>
+                    <td>
+                        <input type="text" ng-model="EachItemlist.measureUnit" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        sizes
+                    </td>
+                    <td>
+                        <input type="text" ng-model="EachItemlist.sizes" />
+                    </td>
+                </tr>
+                
+                <tr>
+    <td>
+        itemType
+    </td>
+    <td>
+        <input type="text" ng-model="EachItemlist.itemType" />
+    </td>
+</tr>
+                <tr>
+                    <td>
+                        productDate
+                    </td>
+                    <td>
+                        <input type="datetime" ng-model="EachItemlist.productDate" />
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        storageDate
+                    </td>
+                    <td>
+                        <input type="datetime" ng-model="EachItemlist.storageDate" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        itemTaken
+                    </td>
+                    <td>
+                        <input type="datetime" ng-model="EachItemlist.itemTaken" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        imagepath
+                    </td>
+                    <td>
+                        <input type="datetime" ng-model="EachItemlist.imagepath" />
+                    </td>
+                </tr>
+               
+
                 <tr>
                     <td></td>
                     <td>
@@ -120,14 +253,28 @@
                     </td>
                 </tr>
             </table>
+
         </div>
+
+
         <div class="col-sm-4">
             <h3>Tea Item List</h3>
         
                 <table class="table table-responsive">
                     <thead>
 
-                        <tr><td>Id</td><td>Name</td><td>CategoryId</td><td>Unit Price</td><td>Unit</td><td>Items in Unit</td></tr>
+                        <tr>
+                            <td>Id</td><td>Name</td><td>CategoryId</td><td>Unit Price</td><td>Unit</td><td>Items in Unit</td>
+                            <td>Measure Unit</td>
+                            <td>Sizes</td>
+                            <td>ItemType</td>
+                            <td>ProductDate</td>
+                            <td>StorageDate</td>
+
+                            <td>ItemTaken</td>
+                            <td>Imagepath</td>
+
+                         </tr>
 
                     </thead>
 
@@ -140,6 +287,17 @@
                             <td>{{item.itemPrice}}</td>
                             <td>{{item.itemUnit}}</td>
                             <td>{{item.unitNumber}}</td>
+
+                            <td>{{item.measureUnit}}</td>
+                            <td>{{item.sizes}}</td>
+                            <td>{{item.itemType}}</td>
+                            <td>{{item.productDate}}</td>
+                            <td>{{item.storageDate}}</td>
+
+                            <td>{{item.itemTaken}}</td>
+                            <td>{{item.imagepath}}</td>
+                        
+
                             <td><button ng-click="deleteTeaItem(item.id)" class="btn btn-danger">Delete</button></td>
                         </tr>
 
@@ -149,6 +307,7 @@
         </div>
     </div>
 
+    <p ng-show="errMsg" class="alert alert-danger">{{errMsg}}</p>
 
 </div>
 

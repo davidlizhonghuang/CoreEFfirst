@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using TeaJournalInventory.DataModels;
+using EFDataAccess.DataModels;
+using TeaJournalInventory.ErrorHandles;
 
 namespace TeaJournalInventory
 {
@@ -47,21 +44,26 @@ namespace TeaJournalInventory
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+
             loggerFactory.AddDebug();
 
             app.UseApplicationInsightsRequestTelemetry();
 
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                app.UseBrowserLink();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-            }
+            //if (env.IsDevelopment())
+            //{
+
+            //    app.UseDeveloperExceptionPage();
+
+            //    app.UseBrowserLink();
+            //}
+            //else
+            //{
+            //    app.UseExceptionHandler("/Home/Error");    // more generic
+            //}
 
             app.UseApplicationInsightsExceptionTelemetry();
+
+            app.UseMiddleware(typeof(TeaErrorHandler));  //develop or live use this, so we can disable if
 
             app.UseStaticFiles();
 

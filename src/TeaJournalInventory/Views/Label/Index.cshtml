@@ -2,35 +2,34 @@
     ViewData["Title"] = "Home Page";
 }
 
+<style>
+     .tlabel{
+        width: 2.5in; /* plus .6 inches from padding */
+        
+        height: 2.0in; /* plus .125 inches from padding */
+        
+        padding: .125in .3in 0;
+        
+        margin: .125in; /* the gutter */
 
-<div ng-controller="labelCtrl" class="col-sm-12" id="printTable">
+        float: left;
+
+        text-align: center;
+       
+        outline: 1px dotted; /* outline doesn't occupy space like border does */
+        }
+</style>
+
+<div ng-controller="labelCtrl" class="col-sm-12">
    
-     <p class="alert alert-warning" ng-hide="labelList">please wait...</p>
-  
-     <input type="button" ng-click="printDiv()" value="Print" />
+     <a ui-sref="labelsearchview">Search Label</a>
     
-     <br />
+    <ui-view>
+        <p>This is the label SPA page to manage label</p>
+    </ui-view>
 
-    <div ng-repeat="item in labelList" class="">
-        <table class="table table-condensed">
-            <tr>
-                <td>Area:</td>
-                <td>{{item.slot}}</td>
-            </tr>
-            <tr>
-                <td>Category:</td>
-                <td>{{item.category}}</td>
-            </tr>
-            <tr>
-                <td>ItemName:</td>
-                <td>{{item.itemName}}</td>
-            </tr>
-            <tr>
-                <td>ItemPrice:</td>
-                <td>{{item.itemPrice}}</td>
-            </tr>
-        </table>
-    </div>
+    <p ng-show="errMsg" class="alert alert-danger">{{errMsg}}</p>
+
 
 </div>
 

@@ -4,9 +4,13 @@
 
 
 <div ng-controller="slotCtrl">
-    <H2 class="glyphicon glyphicon-flash">Slot Management</H2>
-    <div class="col-sm-12">
-        <div class="col-sm-4">
+   
+     <H2 class="glyphicon glyphicon-flash">Slot Management</H2>
+  
+      <div class="col-sm-12">
+    
+              <div class="col-sm-4">
+
             <h3>Slot CRUD</h3>
             <table class="table table-responsive">
                 <tr>
@@ -88,6 +92,9 @@
          
         </div>
     </div>
+
+    <p ng-show="errMsg" class="alert alert-danger">{{errMsg}}</p>
+
 
  </div>
 

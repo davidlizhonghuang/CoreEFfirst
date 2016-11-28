@@ -3,8 +3,13 @@
 }
 
 <div ng-controller="categoryCtrl">
+
     <H2 class="glyphicon glyphicon-flash">Category Management</H2>
+
     <p class="alert alert-warning" ng-hide="Categorylist">please wait...</p>
+
+    <p ng-show="errMsg" class="alert alert-danger">{{errMsg}}</p>
+
     <div class="col-sm-12">
         <div class="col-sm-4">
             <h3>Category CRUD</h3>
@@ -28,10 +33,10 @@
 
                 <tr>
                     <td>
-                        ParentId
+                        Sub-Slot
                     </td>
                     <td>
-                        <input type="text" ng-model="ParentId" />
+                        <input type="text" ng-model="SubSlot" />
                     </td>
                 </tr>
                 <tr>
@@ -67,10 +72,10 @@
 
                 <tr>
                     <td>
-                        ParentId
+                        Sub-Slot
                     </td>
                     <td>
-                        <input type="text" ng-model="EachCategorylist.parentId" />
+                        <input type="text" ng-model="EachCategorylist.subSlot" />
                     </td>
                 </tr>
                 <tr>
@@ -85,7 +90,7 @@
                 <tr>
                     <td></td>
                     <td>
-                        <input type="button" id="SlotBtn" ng-click="updateCategory(EachCategorylist.id,EachCategorylist.categoryName,EachCategorylist.parentId, EachCategorylist.slotNo)" value="Submit" class="btn btn-primary" />
+                        <input type="button" id="SlotBtn" ng-click="updateCategory(EachCategorylist.id,EachCategorylist.categoryName,EachCategorylist.subSlot, EachCategorylist.slotNo)" value="Submit" class="btn btn-primary" />
                     </td>
                 </tr>
 
@@ -97,13 +102,13 @@
        
                 <table class="table table-responsive">
                     <thead>
-                        <tr><td>Category Id</td><td>Name</td><td>ParentId</td><td>SlotNo</td><td></td></tr>
+                        <tr><td>Category Id</td><td>Name</td><td>Sub-Slot</td><td>SlotNo</td><td></td></tr>
                     </thead>
                     <tbody ng-repeat="item in Categorylist">
                         <tr>
                             <td><a href="" ng-click="eachCategory(item.id)">{{item.id}} Edit</a></td>
                             <td>{{item.categoryName}}</td>
-                            <td>{{item.parentId}}</td>
+                            <td>{{item.subSlot}}</td>
                             <td>{{item.slotNo}}</td>
                             <td><button ng-click="deleteCategory(item.id)" class="btn btn-danger">Delete</button></td>
                         </tr>
@@ -112,4 +117,5 @@
          
         </div>
     </div>
+
 </div>

@@ -1,0 +1,59 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    .tLabel {
+         width: 2.825in; /* plus .6 inches from padding */
+         height: 2.805in; /* plus .125 inches from padding */
+         padding: .125in .3in 0;
+         margin: .125in; /* the gutter */
+        float: left;
+        text-align: left;
+         outline: 1px dotted; /* outline doesn't occupy space like border does */
+    }
+    .page-break  {
+        clear: left;
+        display: block;
+        page-break-after: always;
+    }
+</style>
+
+<div ng-controller="labelCtrl" class="col-sm-12" id="printTable">
+   
+     <p class="alert alert-warning" ng-show="searchclick">please wait...</p>
+ 
+    <div>
+         Tea Item:<input type="text" ng-model="ItemName" /><br />
+         Slot:<input type="text" ng-model="SlotName" /><br />
+         Category:<input type="text" ng-model="CategoryName" /><br />
+        <input type="button" id="SlotBtn" ng-click="searchLabel(ItemName,SlotName,CategoryName)" value="Submit" class="btn btn-primary" />
+    </div>
+
+    <p ng-show="errMsg" class="alert alert-danger">{{errMsg}}</p>
+
+
+    <div ng-repeat="item in searchList" class="tLabel">
+        
+        <table class="table table-condensed">
+            <tr>
+                <td>Area:</td>
+                <td>{{item.slot}}</td>
+            </tr>
+            <tr>
+                <td>Category:</td>
+                <td>{{item.category}}</td>
+            </tr>
+            <tr>
+                <td>ItemName:</td>
+                <td>{{item.itemName}}</td>
+            </tr>
+            <tr>
+                <td>ItemPrice:</td>
+                <td>{{item.itemPrice}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="page-break"></div>
+</div>
