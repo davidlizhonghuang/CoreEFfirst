@@ -23,13 +23,16 @@
 <div ng-controller="labelCtrl" class="col-sm-12">
    
      <a ui-sref="labelsearchview">Search Label</a>
-    
+  
+      <div class="list-group">
+         <a ui-sref="labelsearchview"  class="btn btn-primary">Search Label</a>
+      </div>
+
     <ui-view>
         <p>This is the label SPA page to manage label</p>
     </ui-view>
 
     <p ng-show="errMsg" class="alert alert-danger">{{errMsg}}</p>
-
 
 </div>
 

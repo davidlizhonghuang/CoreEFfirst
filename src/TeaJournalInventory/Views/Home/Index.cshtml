@@ -5,11 +5,11 @@
 <script src="~/lib/jquery/dist/jquery.js"></script>
 
 <div ng-controller="indexCtrl">
-
-        <a ui-sref="slotview">Slot CRUD</a>
-        <a ui-sref="categoryview">Category CRUD</a>
-        <a ui-sref="teaitemview">TeaItem CRUD</a>
-
+    <div class="list-group">
+        <a ui-sref="slotview" class="btn btn-primary">Slot CRUD</a>
+        <a ui-sref="categoryview" class="btn btn-primary">Category CRUD</a>
+        <a ui-sref="teaitemview" class="btn btn-primary">TeaItem CRUD</a>
+    </div>
     <ui-view>
         <p>This is the CRUD SPA page to manage inventory</p>
     </ui-view>

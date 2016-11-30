@@ -12,17 +12,14 @@ namespace TeaJournalInventory.Controllers
     {
 
         private readonly InventoryContext _context;
-
         public LabelController(InventoryContext context)
         {
             _context = context;
         }
-
         public IActionResult Index()
         {
             return View();
         }
-
         [HttpGet]
         public JsonResult GetLabels(HttpRequestMessage request)
         {
@@ -83,13 +80,9 @@ namespace TeaJournalInventory.Controllers
                 var rtn = from s in _context.Slots
                           join c in _context.TeaCategorys on s.SlotNo equals c.SlotNo
                           join p in _context.TeaItems on c.Id equals p.CategoryId
-
                           into ps
-
                           from p in ps.DefaultIfEmpty()
-
                           where (s.SlotName == para.SlotName || c.CategoryName == para.CategoryName || p.ItemName == para.ItemName)
-
                           select new LabelData
                           {
                               Slot = s.SlotName,

@@ -6,6 +6,8 @@
 
     <H2 class="glyphicon glyphicon-flash">Tea Item Management</H2>
 
+    <p ng-show="errMsg" class="alert alert-danger">{{errMsg}}</p>
+
     <p class="alert alert-warning" ng-hide="TeaItemlist">please wait...</p>
 
     <div class="col-sm-12">
@@ -219,7 +221,6 @@
                         <input type="datetime" ng-model="EachItemlist.productDate" />
                     </td>
                 </tr>
-                
                 <tr>
                     <td>
                         storageDate
@@ -257,29 +258,29 @@
         </div>
 
 
+
         <div class="col-sm-4">
             <h3>Tea Item List</h3>
         
                 <table class="table table-responsive">
                     <thead>
-
                         <tr>
-                            <td>Id</td><td>Name</td><td>CategoryId</td><td>Unit Price</td><td>Unit</td><td>Items in Unit</td>
+                            <td>Id</td>
+                            <td>Name</td>
+                            <td>CategoryId</td>
+                            <td>Unit Price</td>
+                            <td>Unit</td>
+                            <td>Items in Unit</td>
                             <td>Measure Unit</td>
                             <td>Sizes</td>
                             <td>ItemType</td>
                             <td>ProductDate</td>
                             <td>StorageDate</td>
-
                             <td>ItemTaken</td>
                             <td>Imagepath</td>
-
                          </tr>
-
                     </thead>
-
                     <tbody ng-repeat="item in TeaItemlist">
-
                         <tr>
                             <td><a href="" ng-click="eachTeaItem(item.id)">{{item.id}} Edit</a></td>
                             <td>{{item.itemName}}</td>
@@ -287,17 +288,13 @@
                             <td>{{item.itemPrice}}</td>
                             <td>{{item.itemUnit}}</td>
                             <td>{{item.unitNumber}}</td>
-
                             <td>{{item.measureUnit}}</td>
                             <td>{{item.sizes}}</td>
                             <td>{{item.itemType}}</td>
                             <td>{{item.productDate}}</td>
                             <td>{{item.storageDate}}</td>
-
                             <td>{{item.itemTaken}}</td>
                             <td>{{item.imagepath}}</td>
-                        
-
                             <td><button ng-click="deleteTeaItem(item.id)" class="btn btn-danger">Delete</button></td>
                         </tr>
 
@@ -307,7 +304,6 @@
         </div>
     </div>
 
-    <p ng-show="errMsg" class="alert alert-danger">{{errMsg}}</p>
 
 </div>
 

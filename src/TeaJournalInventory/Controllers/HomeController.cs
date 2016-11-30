@@ -374,9 +374,7 @@ namespace TeaJournalInventory.Controllers
                 updateSlot.Imagepath = jslot.Imagepath;
 
                 _context.TeaItems.Attach(updateSlot);
-
                 _context.Entry(updateSlot).State = System.Data.Entity.EntityState.Modified;
-
                 _context.SaveChanges();
             }
             return Json("done");
@@ -389,9 +387,7 @@ namespace TeaJournalInventory.Controllers
             {
 
                 var updateSlot = _context.TeaItems.FirstOrDefault(x => x.id == id);
-
                 _context.Entry(updateSlot).State = System.Data.Entity.EntityState.Deleted;
-
                 _context.SaveChanges();
 
             }
